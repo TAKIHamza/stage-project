@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: Colors.white,
         padding: EdgeInsets.all(16.0),
@@ -69,12 +69,12 @@ class _LoginPageState extends State<LoginPage> {
             
             // logo
             Container(
-              width: 115,
-              height: 115,
+              width: 120,
+              height: 120,
             child: Image.asset("images/MGSOFT.jpg"),
             ),
 
-            SizedBox(height: 30.0),
+            SizedBox(height: 40.0),
 
              // message d'erreur
             Text(
@@ -82,20 +82,20 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(color: Colors.red),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height: 20.0),
            
            // les inputs 
             TextField(
               controller: _usernameController,
               decoration: InputDecoration(labelText: 'Username'),
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height: 20.0),
             TextField(
               controller: _passwordController,
               decoration: InputDecoration(labelText: 'Password'),
               obscureText: true,
             ),
-            SizedBox(height: 50.0),
+            SizedBox(height: 90.0),
             
             // button de login
             Center(
@@ -104,10 +104,9 @@ class _LoginPageState extends State<LoginPage> {
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(200, 50),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)
+                  borderRadius: BorderRadius.circular(25)
                 ),
-                primary: Color.fromARGB(255, 67, 140, 200)
-              ),
+                primary: Colors.deepOrangeAccent              ),
 
               onPressed: _isLoading ? null : _login,
               
@@ -124,11 +123,16 @@ class _LoginPageState extends State<LoginPage> {
             // button pour naviger à la page de signup
             TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/home');
+                Navigator.pushNamed(context, '/signup');
               },
               child: Text('Sign up'),
             ),
-           
+            //-----------------------------
+            SizedBox(height: 16.0),
+
+            IconButton(onPressed:() {
+                Navigator.pushNamed(context, '/home');
+              } , icon: Icon(Icons.login_rounded))
           ],
         ),
       ),

@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dev/Provider/cart_provider.dart';
+import 'package:flutter_dev/Provider/favorite_provider.dart';
 import 'package:flutter_dev/user/autentification/login.dart';
 import 'package:flutter_dev/user/autentification/signup.dart';
 import 'package:flutter_dev/user/views/cart.dart';
 import 'package:flutter_dev/user/views/homepage.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Cart()),
+        ChangeNotifierProvider(create: (_) => Favorites()),
+      ],
+      child: const MyApp(),
+    ),);
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'MG-SOFT App',
       theme: ThemeData(
         
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepOrange,
       ),
       debugShowCheckedModeBanner: false,
       
@@ -27,7 +36,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => LoginPage(),
         '/signup': (context) => SignupPage(),
         '/home': (context) => HomePage(), 
-        '/home/cart': (context) => SpeechToTextScreen(), 
+        '/home/cart': (context) => CartPage(), 
       },
     );
   }

@@ -61,7 +61,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
+      resizeToAvoidBottomInset: false,
       body: Container(
         padding: EdgeInsets.all(20.0),
         color: Colors.white,
@@ -115,7 +115,7 @@ class _SignupPageState extends State<SignupPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)
                 ),
-                primary: Color.fromARGB(255, 67, 140, 200)
+                primary: Colors.deepOrangeAccent
               ),
               onPressed: _isLoading ? null : _signup,
               child: _isLoading
